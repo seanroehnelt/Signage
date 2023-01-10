@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Xgj-up-wSf">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="20037" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j6g-Fe-Mdb">
     <device id="appleTV" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -7,6 +7,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="fY9-8i-y8W">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkn-8s-vUm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController id="j6g-Fe-Mdb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d1p-QX-gVK">
+                        <rect key="frame" x="0.0" y="60" width="1920" height="145"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Xgj-up-wSf" kind="relationship" relationship="rootViewController" id="EAM-Ma-VI7"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1167" y="-1413"/>
+        </scene>
         <!--Config View Controller-->
         <scene sceneID="9lE-WX-96o">
             <objects>
@@ -45,6 +61,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rbh-h3-eDf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="79d-pk-Xeh"/>
                     <connections>
                         <outlet property="imageUrlTextField" destination="CnD-Bx-NoG" id="PBP-R2-Sg6"/>
                         <outlet property="loadImageButton" destination="Nal-e4-D9j" id="4DD-tg-IkP"/>
@@ -52,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uX-ET-Cqw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="24"/>
+            <point key="canvasLocation" x="1160" y="-1413"/>
         </scene>
     </scenes>
 </document>

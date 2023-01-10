@@ -15,7 +15,7 @@ class ConfigViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageUrlTextField.text = "https://images.squarespace-cdn.com/content/v1/571079941bbee00fd7f0470f/1527169029768-KXVB6JPR9D2RFXNO58VE/Titanium+%282%29.JPG?format=1500w"
+        imageUrlTextField.text = "http://tinyurl.com/hatchtv"
     }
 
     @IBAction func loadAndDisplayImage() {
