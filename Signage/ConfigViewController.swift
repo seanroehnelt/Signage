@@ -28,8 +28,5 @@ class ConfigViewController: UIViewController {
         self.navigationController?.pushViewController(imageVC, animated: true)
 
         imageVC.imageUrl = imageUrl
-
-//        let url = URL(string: "https://example.com/image.png")
-//        imageView.kf.setImage(with: url)
     }
 }

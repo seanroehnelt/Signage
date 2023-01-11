@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class ImageDisplayViewController: UIViewController {
+    let autoReloadTime: TimeInterval = 60 * 10
+
     private var _imageUrl: URL?
     public var imageUrl: URL? {
         get {
@@ -32,16 +34,6 @@ class ImageDisplayViewController: UIViewController {
         return imageView
     }()
 
-//    override func loadView() {
-//        view.addSubview(imageView)
-//        view.addConstraints([
-//            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            imageView.topAnchor.constraint(equalTo: view.topAnchor),
-//            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            imageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,7 +51,18 @@ class ImageDisplayViewController: UIViewController {
     }
 
     private func loadImageForUrl(_ url: URL) {
-//        let url = URL(string: "https://example.com/image.png")
-        imageView.kf.setImage(with: url)
+        KingfisherManager.shared.retrieveImage(with: url, options: [.forceRefresh]) { [weak self] result in
+            switch result {
+            case .success(let imageResult):
+                let image = imageResult.image
+                self?.imageView.kf.setImage(with: url, placeholder: image, options: [.cacheMemoryOnly, .transition(.fade(1.0))])
+            case .failure(let error):
+                print(error)
+            }
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + autoReloadTime, execute: { [weak self] in
+            self?.loadImageForUrl(url)
+        })
     }
 }
