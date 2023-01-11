@@ -9,13 +9,20 @@ import UIKit
 import Kingfisher
 
 class ConfigViewController: UIViewController {
+    let ImageURLKey = "ImageURL"
+    let DefaultImageURL = "http://tinyurl.com/hatchtv"
+
     @IBOutlet weak var imageUrlTextField: UITextField!
     @IBOutlet weak var loadImageButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imageUrlTextField.text = "http://tinyurl.com/hatchtv"
+        if let previousImageHref = UserDefaults.standard.value(forKey: ImageURLKey) as? String, let previousImageUrl = URL(string: previousImageHref) {
+            imageUrlTextField.text = previousImageUrl.absoluteString
+        } else {
+            imageUrlTextField.text = DefaultImageURL
+        }
     }
 
     @IBAction func loadAndDisplayImage() {
@@ -23,6 +30,7 @@ class ConfigViewController: UIViewController {
             return
         }
 
+        UserDefaults.standard.setValue(imageUrl.absoluteString, forKey: ImageURLKey)
 
         let imageVC = ImageDisplayViewController()
         self.navigationController?.pushViewController(imageVC, animated: true)
